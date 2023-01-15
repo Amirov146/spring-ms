@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>Main</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="main/css/bootstrap.min.css">
+    <!-- style css -->
+    <link rel="stylesheet" href="main/css/style.css">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="main/css/responsive.css">
+    <!-- fevicon -->
+    <link rel="icon" href="main/images/fevicon.png" type="image/gif" />
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="main/css/gallery.css">
+
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+    <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
+    <link rel="stylesheet" href="main/css/search-pop-up.css">
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="main/js/search-pop-up.js"></script>
+</head>
+<!-- body -->
+
+<body class="main-layout">
+<div id="preloader">
+    <div class="circle outer-lv3">
+        <div class="circle outer-lv2">
+            <div class="circle outer-lv1">
+                <div class="center">
+                    <div class="arrow top"></div>
+                    <div class="arrow left"></div>
+                    <div class="arrow right"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- header -->
+<header>
+    <!-- header inner -->
+    <div id="user_form">
+    </div>
+    <div class="header-top">
+        <div class="header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+
+
+                        <ul class="top_icon">
+                            <li type="submit" class="header-navigation"> <a href="#" style="color:#cc0000; font-size: 25px; font-weight: bold;">Home</a> </li>
+                            <li type="submit" class="header-navigation"> <a href="#movie" style="color:#cc0000; font-size: 25px; font-weight: bold">Movies</a> </li>
+                            <div class="search-box">
+                                <button class="btn-search"><i style="color:red ;" class="fa-solid fa-magnifying-glass"></i></button>
+                                <input type="text" class="input-search" placeholder="Type to Search..." onkeyup="SearchFunction()">
+                            </div>
+                            <br>
+                                <div id="search-popup">
+                                <br>
+                                <ul id="search-results" style="width: 300px; background-color: #111211;">
+                                </ul>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 ">
+            <div class="text-img">
+
+            </div>
+        </div>
+
+        <nav role="navigation">
+            <div id="menuToggle">
+                <input type="checkbox">
+                <span></span>
+                <span></span>
+                <span></span>
+                <ul id="menu">
+                    <a href="/user"><i style="letter-spacing:2px ;" class="fa-solid fa-user">  Account</i></a>
+                    <a href="/logout"><i style="letter-spacing:2px ; margin-top: 10px;" class="fa-solid fa-right-from-bracket"> Log out</i></a>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+
+ <div class="before_gallery">
+    <img src="main/images/image1.jpg" id="mainPhoto">
+</div>
+
+<div><h1 align="center">Movies</h1> <br></div>
+
+<div class="gallery" style="margin-bottom: 200px;" id="movie">
+    <a th:each = "movie, hh : ${movie}" th:href="@{/movie/{id}(id=${movie.id})}">
+        <img th:src="@{${'/movie/display/'+ movie.id}}" >
+        <p th:text="${movie.title}"></p>
+    </a>
+</div>
+
+
+<div class="my-pagination">
+    <a th:if="${movie.hasPrevious()}" th:href="@{/main(page=${movie.number - 1}, size=${movie.size})}">Previous</a>
+    <span th:text="${movie.number + 1}"></span> / <span th:text="${movie.totalPages}"></span>
+    <a th:if="${movie.hasNext()}" th:href="@{/main(page=${movie.number + 1}, size=${movie.size})}">Next</a>
+</div>
+
+
+
+
+<!-- Javascript files-->
+<script src="main/js/jquery.min.js"></script>
+<script src="main/js/popper.min.js"></script>
+<script src="main/js/bootstrap.bundle.min.js"></script>
+<script src="main/js/jquery-3.0.0.min.js"></script>
+<script src="main/js/plugin.js"></script>
+<script src="main/js/login.js"></script>
+<script src="main/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="main/js/custom.js"></script>
+<script src="main/https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+</body>
+</html>

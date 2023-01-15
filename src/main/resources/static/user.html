@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Setting Page UI Design</title>
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <!-- CSS -->
+    <link rel="stylesheet" href="/user/css/style.css" />
+  </head>
+  <body background="/user/images/476960.jpg" >
+  <br> <br> <br>
+  <ul class="top_icon">
+    <li type="submit" class="header-navigation"> <a href="/main" style="color:#cc0000; font-size: 25px; font-weight: bold;">Home</a> </li>
+  </ul>
+    <div class="container">
+
+     
+      <!-- <a href="#">
+        <i class="fa-solid fa-x"></i>
+      </a> -->
+      <div class="rightbox">
+        <div class="profile">
+          <h1>Personal Info</h1>
+          <h2>Full Name</h2>
+          <input type="text" th:value="${user.username}"><button class="btn">update</button>
+          <h2>Birthday</h2>
+          <input type="date" value="Eugen">
+          <h2>Gender</h2>
+          <select name="" id="">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+          <h2>Email</h2>
+          <input type="mail" value="example@example.com"><button class="btn">Change</button>
+          <h2>Password</h2>
+          <input type="password" value="123456789"><button class="btn">Change</button>
+        </div>
+      </div>
+    </div>
+
+    
+  </body>
+</html>

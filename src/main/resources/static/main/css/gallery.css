@@ -1,0 +1,63 @@
+* { box-sizing: border-box; }
+body { background: black; }
+div h1{ color: white;
+  background-color: black;
+  margin-top: 20px;
+  font-size: 60px;}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 10px;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+}
+
+.gallery img {
+  width: 250px;
+  height: 400px;
+  padding: 10px;
+  object-fit: contain;
+  color: black;
+  transition: opacity 0.8s;
+}
+
+.gallery img:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.gallery img:hover + p {
+  color: white;
+}
+
+.gallery p{
+  color: black;
+  font-size: 20px;
+}
+
+.gallery p:hover{
+  cursor: context-menu;
+}
+
+.my-pagination{
+  text-align: center;
+}
+
+.my-pagination a{
+  color: white;
+  font-size: 20px;
+  margin-right: 0px;
+  margin-left: 0px;
+}
+.my-pagination span{
+  color: white;
+  font-size: 20px;
+}
+
+.my-pagination a:hover{
+  color: red;
+}
+

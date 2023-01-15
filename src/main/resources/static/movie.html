@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/movie/css/style.css">
+</head>
+<body style="background-image: url('/movie/image/background.jpg');">
+
+<br> <br> <br>
+<ul class="top_icon">
+    <li type="submit" class="header-navigation"> <a href="/main" style="color:#cc0000; font-size: 25px; font-weight: bold;">Home</a> </li>
+</ul>
+
+    
+    <div class="container">
+        
+        <div class="wrapper">
+
+            <div class="wrapper-col-1">
+                <img th:src="@{${'/movie/display/'+ movie.id}}">
+            </div>
+            <!-- /.wrapper-col-1 -->
+
+            <div class="wrapper-col-2">
+                <h1 class="title" th:text="${movie.title}"></h1>
+                <h6 class="subtitle">12+</h6>
+                <p class="description" th:text="${movie.description}"></p>
+                
+                <div type="submit" class="mb-40">
+                    <a href="#movie" class="btn">Watch</a>
+                </div>
+                <!-- /.mb-40 -->
+
+                <ul class="params mb-40">
+                    <li><span class="text-muted">Audio</span> Russian, English</li>
+                    <li><span class="text-muted">Subtitles</span> Russian, English</li>
+                    <li><span class="text-muted">Quality</span> <span><span class="tag">Full HD</span></span></li>
+                </ul>
+                
+                <h2>About</h2>
+
+                <ul class="params">
+                    <li><span class="text-muted">Release year</span> 2008</li>
+                    <li><span class="text-muted">Country</span> USA</li>
+                    <li><span class="text-muted">Genre</span> <span><a href="#">Action</a>, <a href="#">Adventure</a>, <a href="#">Comedy</a></span></li>
+                    <li><span class="text-muted">Director</span> Jon Favreau</li>
+                    <li><span class="text-muted">Time</span> <time class="text-muted">2h 6m</time></li>
+                </ul>
+            </div>
+            <!-- /.wrapper-col-2 -->
+
+            
+            
+        </div>
+        <!-- /.wrapper -->
+    </div>
+    <!-- /.container -->
+
+<div class="film" id="movie" style="text-align: center;">
+	<video width="900px" height="500px" controls="controls">
+		
+		<source src="/movie/videos/marvel.mp4"
+			type="video/mp4">
+	</video>
+</div>
+
+<h1 align="center">Comments</h1>
+<!--<div style="margin-bottom: 300px">-->
+<!--    <p th:each="comment : ${comments}" th:text="${comment.text}" align="center"></p>-->
+<!--</div>-->
+    <div style="margin-bottom: 200px; margin-top: 100px;">
+        <div th:if="${comments.size() > 0}" th:each="comment : ${comments}" class="comments">
+            <p th:text="${comment.text}" style="padding-top: 20px; padding-left: 20px"></p>
+            <br>
+            <button style="font-size: 15px; padding-left: 20px;">Reply</button>
+        </div>
+        <p th:if="${comments.size() == 0}" align="center" style="color: darkred">There are no comments yet</p>
+    </div>
+</html>
+
+</body>
+</html>

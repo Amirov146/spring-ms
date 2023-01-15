@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>Marvel movies</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="index/css/bootstrap.min.css">
+    <!-- style css -->
+    <link rel="stylesheet" href="index/css/style.css">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="index/css/responsive.css">
+    <!-- fevicon -->
+    <link rel="icon" href="index/images/fevicon.png" type="image/gif" />
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="index/css/jquery.mCustomScrollbar.min.css">
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+</head>
+<!-- body -->
+
+<body class="main-layout">
+    <div class="boks" id="box">
+        <img type="submit" id="close-icon" class="close-icon" src="index/images/close-icon.png" alt="">
+        <div class="forme">
+            <h2>Sign in</h2>
+            <form th:action="@{/}" method="post">
+                <div class="inputBox">
+                    <input type="text" required="required" name="username">
+                    <span>Username</span>
+                    <i></i>
+                </div>
+                <div class="inputBox">
+                    <input type="password" required="required" name="password">
+                    <span>Password</span>
+                    <i></i>
+                </div>
+               <input type="submit" value="Login">
+            </form>
+    </div>
+</div> 
+<div class="reg-boks" id="regbox">
+    <img type="submit" id="close-reg-icon" class="close-icon" src="index/images/close-icon.png" alt="">
+    <div class="forme">
+        <h2>Sign up</h2>
+        <div class="inputBox">
+            <input type="text" required="required">
+            <span>Email</span>
+            <i></i>
+        </div>
+        <div class="inputBox">
+            <input type="text" required="required">
+            <span>Username</span>
+            <i></i>
+        </div>
+        <div class="inputBox">
+            <input type="password" required="required">
+            <span>Password</span>
+            <i></i>
+        </div>
+        <input type="submit" value="Signup">
+</div>
+</div> 
+    <!-- loader  -->
+    <div class="loader_bg">
+        <div class="loader"><img src="index/images/loading.gif" alt="#" /></div>
+    </div>
+    <!-- end loader -->
+    <!-- header -->
+    <header>
+        <!-- header inner -->
+        <div class="header-top">
+            <div class="header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                            <div class="full">
+                                <div class="center-desk">
+                                    <div class="logo">
+                                        <img src="index/images/logo.png" alt="#" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                            
+                           
+                                         <ul class="top_icon">
+                                            <li type="submit" class="button_login" id="open-login-form"> <a href="#">Login</a> </li>
+                                            <li type="submit" class="button_reg" id="open-reg-form"> <a href="/register">Signup</a>  </li>
+                                            <li class="mean-last">
+                                            </li>
+                                        </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Javascript files-->
+    <script src="index/js/jquery.min.js"></script>
+    <script src="index/js/popper.min.js"></script>
+    <script src="index/js/bootstrap.bundle.min.js"></script>
+    <script src="index/js/jquery-3.0.0.min.js"></script>
+    <script src="index/js/plugin.js"></script>
+    <script src="index/js/login.js"></script>
+    <!-- sidebar -->
+    <script src="index/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="index/js/custom.js"></script>
+    <script src="index/js/validation.js"></script>
+
+</body>
+</html>

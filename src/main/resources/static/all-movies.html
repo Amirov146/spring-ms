@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--=============== BOXICONS ===============-->
+        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+        <!--=============== CSS ===============-->
+        <link rel="stylesheet" href="admin-panel/css/styles.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <title></title>
+    </head>
+    <body>
+        <!--=============== NAV ===============-->
+        <div class="nav" id="nav">
+            <nav class="nav__content">
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class='bx bx-chevron-right' ></i>
+                </div>
+    
+                <a href="#" class="nav__logo">
+                    <i class='bx bx-shield-quarter' ></i>
+                    <span class="nav__logo-name">Admin panel</span>
+                </a>
+    
+                <div class="nav__list">
+                    <a href="/find-user" class="nav__link">
+                        <i class='bx bx-file-find'></i>
+                        <span class="nav__name">Find user</span>
+                    </a>
+    
+                    <a href="#" class="nav__link active-link">
+                        <i class='bx bx-movie-play'></i>
+                        <span class="nav__name">All movies</span>
+                    </a>
+    
+                    <a href="/add-movie" class="nav__link">
+                        <i class='bx bx-plus' ></i>
+                        <span class="nav__name">Add movie</span>
+                    </a>
+    
+                    <a href="/delete-movie" class="nav__link">
+                        <i class='bx bx-minus' ></i>
+                        <span class="nav__name">Delete movie</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+
+        <!--=============== MAIN ===============-->
+        <main class="container section">
+        </main>
+        <h1>All movies</h1>
+        <table class="center">
+            <tr>
+                <th>ID</th>
+                <th>Movie title</th>
+            </tr>
+            <tr th:each="movie : ${movies}">
+                <td th:text="${movie.id}" style="text-align: center"></td>
+                <td th:text="${movie.title}" ></td>
+            </tr>
+        </table>
+
+        <h1>Find Movie</h1>
+        <form>
+            <input type="text" placeholder="movie id" id="movieIdInput" onkeyup="findMovieById()">
+        </form>
+        <br>
+        <label id="movieID"></label>
+        <br>
+        <label id="movieTitle"></label>
+
+
+        <!--=============== MAIN JS ===============-->
+        <script src="admin-panel/js/main.js"></script>
+    </body>
+</html>

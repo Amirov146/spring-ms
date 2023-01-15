@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--=============== BOXICONS ===============-->
+        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+        <!--=============== CSS ===============-->
+        <link rel="stylesheet" href="admin-panel/css/styles.css">
+        <title></title>
+    </head>
+    <body>
+        <!--=============== NAV ===============-->
+        <div class="nav" id="nav">
+            <nav class="nav__content">
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class='bx bx-chevron-right' ></i>
+                </div>
+    
+                <a href="#" class="nav__logo">
+                    <i class='bx bx-shield-quarter' ></i>
+                    <span class="nav__logo-name">Admin panel</span>
+                </a>
+    
+                <div class="nav__list">
+                    <a href="/find-user" class="nav__link">
+                        <i class='bx bx-file-find'></i>
+                        <span class="nav__name">Find user</span>
+                    </a>
+    
+                    <a href="/all-movies" class="nav__link">
+                        <i class='bx bx-movie-play'></i>
+                        <span class="nav__name">All movies</span>
+                    </a>
+    
+                    <a href="/add-movie" class="nav__link">
+                        <i class='bx bx-plus' ></i>
+                        <span class="nav__name">Add movie</span>
+                    </a>
+    
+                    <a href="#" class="nav__link active-link">
+                        <i class='bx bx-minus' ></i>
+                        <span class="nav__name">Delete movie</span>
+                    </a>
+    
+                </div>
+            </nav>
+        </div>
+
+        <!--=============== MAIN ===============-->
+        <main class="container section">
+            <h1>Delete movie</h1>
+            <form th:action="@{/delete-movie}" method="post">
+                <input type="hidden" name="_method" value="DELETE"/>
+                <label>Enter movie ID:</label>
+                <input type="text" name="id"/>
+                <button type="submit">Delete movie</button>
+            </form>
+        </main>
+
+        <!--=============== MAIN JS ===============-->
+        <script src="admin-panel/js/main.js"></script>
+    </body>
+</html>
