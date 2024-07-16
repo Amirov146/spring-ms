@@ -1,5 +1,9 @@
-package com.example.main;
+package com.example.main.controller;
 
+import com.example.main.serviceImpl.UserServiceImpl;
+import com.example.main.model.UsersRoles;
+import com.example.main.repository.UsersRolesRepository;
+import com.example.main.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,7 +23,7 @@ public class UserController {
     UserServiceImpl userService;
 
     @Autowired
-    Users_Roles_Repository users_roles_repository;
+    UsersRolesRepository users_roles_repository;
 
     @GetMapping("/all")
     @ResponseBody
@@ -50,7 +54,7 @@ public class UserController {
             }
             else {
                 userService.save(user);
-                users_roles_repository.save(new Users_Roles(new Users_Roles.Users_Roles_ID(user.getId(),1L)));
+                users_roles_repository.save(new UsersRoles(new UsersRoles.Users_Roles_ID(user.getId(),1L)));
                 return "<script> alert(\"User was signed up successfully.Now please Log in \");" +
                         "window.location.replace(\"/\");" +
                          "</script>";

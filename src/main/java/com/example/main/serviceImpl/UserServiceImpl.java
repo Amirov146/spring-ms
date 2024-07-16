@@ -1,5 +1,8 @@
-package com.example.main;
+package com.example.main.serviceImpl;
 
+import com.example.main.model.User;
+import com.example.main.repository.UserRepository;
+import com.example.main.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

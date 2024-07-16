@@ -1,6 +1,6 @@
-package com.example.main;
+package com.example.main.security;
 
-import com.example.main.UserServiceDetails;
+import com.example.main.service.UserServiceDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -44,7 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         }
     }
 
-    UserServiceDetails userService;
+    private UserServiceDetails userService;
 
     @Autowired
     public void setUserService(UserServiceDetails userService) {
@@ -58,10 +58,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/authenticated/**").authenticated()
                 .antMatchers("/admin-panel","admin-panel/css", "admin-panel/js"
-                , "/find-user", "/delete-movie","/all-movies","/add-movie").hasRole("ADMIN")
+                , "/find-user", "/delete-movie","/all-movies","/add-movie").hasAuthority("ADMIN")
                 .antMatchers("/main/**","main/css/**","main/icon/**","main/images/**","main/js/**",
                 "/movie/**","movie/css","movie/images","movie/videos",
-                        "/test/**","/user","user/css/**","user/images/**").hasRole("USER")
+                        "/test/**","/user","user/css/**","user/images/**").hasAuthority("USER")
                 .antMatchers("/","index/css/**","index/icon/**","index/js/**","index/images/**"
                 ,"/register","site/cs","site/images/**","reg/js/**","reg/css/**","reg/images/**").permitAll()
                 .and()
@@ -75,7 +75,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/");
     }
 
-    //
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

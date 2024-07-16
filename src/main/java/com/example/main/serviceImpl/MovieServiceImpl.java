@@ -1,5 +1,8 @@
-package com.example.main;
+package com.example.main.serviceImpl;
 
+import com.example.main.model.Movie;
+import com.example.main.repository.MovieRepository;
+import com.example.main.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

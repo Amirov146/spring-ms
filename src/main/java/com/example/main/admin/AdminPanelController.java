@@ -1,5 +1,9 @@
-package com.example.main;
+package com.example.main.admin;
 
+import com.example.main.model.Movie;
+import com.example.main.serviceImpl.MovieServiceImpl;
+import com.example.main.model.User;
+import com.example.main.serviceImpl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

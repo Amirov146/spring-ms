@@ -5,7 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan({"configs","models","controllers","services","repositories", "com.example.main"})
+//@ComponentScan({"configs","models","controllers","services","repositories", "com.example.main"})
+//@ComponentScan("com.example.main")
 
 public class Main {
 	public static void main(String[] args) {

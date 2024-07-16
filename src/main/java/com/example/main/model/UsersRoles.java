@@ -1,11 +1,11 @@
-package com.example.main;
+package com.example.main.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "users_roles")
-public class Users_Roles implements Serializable{
+public class UsersRoles implements Serializable{
 
     public static class Users_Roles_ID implements Serializable{
         private Long user_id;
@@ -23,9 +23,9 @@ public class Users_Roles implements Serializable{
     Users_Roles_ID users_roles_id;
 
 
-    public Users_Roles(Users_Roles_ID users_roles_id) {
+    public UsersRoles(Users_Roles_ID users_roles_id) {
         this.users_roles_id = users_roles_id;
     }
 
-    Users_Roles(){}
+    UsersRoles(){}
 }

@@ -1,4 +1,4 @@
-package com.example.main;
+package com.example.main.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Fetch;

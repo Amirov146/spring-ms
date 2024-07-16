@@ -1,5 +1,9 @@
-package com.example.main;
+package com.example.main.controller;
 
+import com.example.main.model.Movie;
+import com.example.main.serviceImpl.MovieServiceImpl;
+import com.example.main.model.User;
+import com.example.main.serviceImpl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

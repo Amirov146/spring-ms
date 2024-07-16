@@ -1,5 +1,9 @@
-package com.example.main;
+package com.example.main.controller;
 
+import com.example.main.repository.MovieRepository;
+import com.example.main.serviceImpl.MovieServiceImpl;
+import com.example.main.model.Comment;
+import com.example.main.model.Movie;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

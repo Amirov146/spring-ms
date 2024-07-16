@@ -1,4 +1,6 @@
-package com.example.main;
+package com.example.main.service;
+
+import com.example.main.model.User;
 
 import java.util.List;
 import java.util.Optional;
