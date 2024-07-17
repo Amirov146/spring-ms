@@ -1,28 +1,24 @@
-FROM openjdk:17-oracle AS dependencies
+FROM openjdk:17-jdk-alpine AS build
 WORKDIR /app
 
-COPY mvnw .
-COPY .mvn .mvn
-COPY pom.xml .
+#COPY .mvn .mvn
+#COPY mvnw .
+#COPY pom.xml .
+#COPY src src
 
-#RUN ./mvnw dependency:go-offline -B
-#RUN ./mvnw clean install -DskipTests
+COPY target/spring-boot-app.jar /app/spring-boot-app.jar
 
-FROM openjdk:17-oracle AS build
-WORKDIR /app
+ARG MAVEN_PROFILE=default
 
-COPY --from=dependencies /app /app
-
-COPY src src
+RUN ./mvnw clean install -P${MAVEN_PROFILE} -DskipTests
 
 FROM openjdk:17-jdk-alpine
 WORKDIR /app
 
-COPY --from=build /app /app
-
-#ARG PROFILE=default
-#COPY application-${PROFILE}.properties /app/application.properties
+#COPY --from=build /app/target/spring-boot-app.jar /app/spring-boot-app.jar
 
 EXPOSE 8080
 
-CMD ["./mvnw", "spring-boot:run"]
+ENV profile=default
+
+CMD ["sh", "-c", "java -jar spring-boot-app.jar --spring.profiles.active=${profile}"]
