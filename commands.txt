@@ -1,0 +1,25 @@
+ sudo -U postgres psql - access database
+\l - show list of databases
+\dt - show list of tables in database
+\d+ - describe a table
+
+#connect to database
+1) connect to user
+2) then type psql
+3) then type \c ‘db name’
+
+
+
+#build docker image
+docker build -t springproject .
+
+
+#build image
+docker build -t spring-boot-app .
+
+#see contents of an image
+docker run -t -i <image name> sh
+
+#run with profile in docker-compose
+MAVEN_PROFILE=ddl profile=ddl docker-compose up --build app
+
