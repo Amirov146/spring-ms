@@ -16,75 +16,113 @@
 
 <br> <br> <br>
 <ul class="top_icon">
-    <li type="submit" class="header-navigation"> <a href="/main" style="color:#cc0000; font-size: 25px; font-weight: bold;">Home</a> </li>
+    <li type="submit" class="header-navigation"><a href="/main"
+                                                   style="color:#cc0000; font-size: 25px; font-weight: bold;">Home</a>
+    </li>
 </ul>
 
-    
-    <div class="container">
-        
-        <div class="wrapper">
 
-            <div class="wrapper-col-1">
-                <img th:src="@{${'/movie/display/'+ movie.id}}">
-            </div>
-            <!-- /.wrapper-col-1 -->
+<div class="container">
 
-            <div class="wrapper-col-2">
-                <h1 class="title" th:text="${movie.title}"></h1>
-                <h6 class="subtitle">12+</h6>
-                <p class="description" th:text="${movie.description}"></p>
-                
-                <div type="submit" class="mb-40">
-                    <a href="#movie" class="btn">Watch</a>
-                </div>
-                <!-- /.mb-40 -->
+    <div class="wrapper">
 
-                <ul class="params mb-40">
-                    <li><span class="text-muted">Audio</span> Russian, English</li>
-                    <li><span class="text-muted">Subtitles</span> Russian, English</li>
-                    <li><span class="text-muted">Quality</span> <span><span class="tag">Full HD</span></span></li>
-                </ul>
-                
-                <h2>About</h2>
-
-                <ul class="params">
-                    <li><span class="text-muted">Release year</span> 2008</li>
-                    <li><span class="text-muted">Country</span> USA</li>
-                    <li><span class="text-muted">Genre</span> <span><a href="#">Action</a>, <a href="#">Adventure</a>, <a href="#">Comedy</a></span></li>
-                    <li><span class="text-muted">Director</span> Jon Favreau</li>
-                    <li><span class="text-muted">Time</span> <time class="text-muted">2h 6m</time></li>
-                </ul>
-            </div>
-            <!-- /.wrapper-col-2 -->
-
-            
-            
+        <div class="wrapper-col-1">
+            <img th:src="@{${'/movie/display/'+ movie.id}}">
         </div>
-        <!-- /.wrapper -->
+        <!-- /.wrapper-col-1 -->
+
+        <div class="wrapper-col-2">
+            <h1 class="title" th:text="${movie.title}"></h1>
+            <h6 class="subtitle">12+</h6>
+            <p class="description" th:text="${movie.description}"></p>
+
+            <div type="submit" class="mb-40">
+                <a href="#movie" class="btn">Watch</a>
+            </div>
+            <!-- /.mb-40 -->
+
+            <ul class="params mb-40">
+                <li><span class="text-muted">Audio</span> Russian, English</li>
+                <li><span class="text-muted">Subtitles</span> Russian, English</li>
+                <li><span class="text-muted">Quality</span> <span><span class="tag">Full HD</span></span></li>
+            </ul>
+
+            <h2>About</h2>
+
+            <ul class="params">
+                <li><span class="text-muted">Release year</span> 2008</li>
+                <li><span class="text-muted">Country</span> USA</li>
+                <li><span class="text-muted">Genre</span> <span><a href="#">Action</a>, <a href="#">Adventure</a>, <a
+                        href="#">Comedy</a></span></li>
+                <li><span class="text-muted">Director</span> Jon Favreau</li>
+                <li><span class="text-muted">Time</span>
+                    <time class="text-muted">2h 6m</time>
+                </li>
+            </ul>
+        </div>
+        <!-- /.wrapper-col-2 -->
+
+
     </div>
-    <!-- /.container -->
+    <!-- /.wrapper -->
+</div>
+<!-- /.container -->
 
 <div class="film" id="movie" style="text-align: center;">
-	<video width="900px" height="500px" controls="controls">
-		
-		<source src="/movie/videos/marvel.mp4"
-			type="video/mp4">
-	</video>
+    <video width="900px" height="500px" controls="controls">
+
+        <source src="/movie/videos/marvel.mp4"
+                type="video/mp4">
+    </video>
 </div>
 
 <h1 align="center">Comments</h1>
-<!--<div style="margin-bottom: 300px">-->
-<!--    <p th:each="comment : ${comments}" th:text="${comment.text}" align="center"></p>-->
-<!--</div>-->
-    <div style="margin-bottom: 200px; margin-top: 100px;">
-        <div th:if="${comments.size() > 0}" th:each="comment : ${comments}" class="comments">
-            <p th:text="${comment.text}" style="padding-top: 20px; padding-left: 20px"></p>
-            <br>
-            <button style="font-size: 15px; padding-left: 20px;">Reply</button>
-        </div>
-        <p th:if="${comments.size() == 0}" align="center" style="color: darkred">There are no comments yet</p>
-    </div>
-</html>
 
+<div style="margin-bottom: 200px; margin-top: 100px;">
+    <div th:if="${comments.size() > 0}" th:each="comment : ${comments}" class="comments">
+
+        <p style="font-weight: bold; color: gray; margin-bottom: 5px;"
+           th:text="${comment.user.username}"></p>
+
+        <p th:text="${comment.text}" style="margin-bottom: 10px;"></p>
+
+        <div th:if="${comment.parentComment != null}"
+             style="color: gray; font-style: italic; font-size: 13px;
+                    border-left: 3px solid #cc0000; padding-left: 10px; margin-bottom: 8px;">
+            <p th:text="'↩ Reply to: ' + ${comment.parentComment.user.username}"></p>
+        </div>
+
+        <button class="reply-btn" th:onclick="|toggleReply(${comment.id})|">Reply</button>
+
+        <div th:id="'reply-form-' + ${comment.id}" style="display:none;" class="reply-form-container">
+            <form th:action="@{/movie/{id}/comment(id=${movie.id})}" method="post"
+                  style="display: flex; flex-direction: column; gap: 8px;">
+                <input type="hidden" name="parentId" th:value="${comment.id}"/>
+                <textarea name="text" rows="3" placeholder="Write your reply..."></textarea>
+                <button type="submit" class="reply-submit-btn">Submit Reply</button>
+            </form>
+        </div>
+    </div>
+
+    <p th:if="${comments.size() == 0}" align="center" style="color: darkred">There are no comments yet</p>
+</div>
+
+<div class="add-comment-section">
+    <h2 align="center">Add Comment</h2>
+    <form th:action="@{/movie/{id}/comment(id=${movie.id})}" method="post"
+          style="display: flex; flex-direction: column; gap: 10px;">
+        <textarea name="text" rows="4" placeholder="Write your comment..."></textarea>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<script>
+    function toggleReply(commentId) {
+        const form = document.getElementById('reply-form-' + commentId);
+        if (form) {
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        }
+    }
+</script>
 </body>
 </html>

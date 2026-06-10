@@ -7,14 +7,21 @@ import javax.persistence.*;
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    private Long id;
 
-    @Column(name = "text")
-    public String text;
+    private String text;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "parent_id")
+    private Comment parentComment;
 
     @ManyToOne
     @JoinColumn(name = "movie_id")
-    public Movie movie;
+    private Movie movie;
 
     public Comment() {}
 
@@ -44,18 +51,27 @@ public class Comment {
         this.text = text;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Comment getParentComment() {
+        return parentComment;
+    }
+
+    public void setParentComment(Comment parentComment) {
+        this.parentComment = parentComment;
+    }
+
     public Movie getMovie() {
         return movie;
     }
 
     public void setMovie(Movie movie) {
         this.movie = movie;
-    }
-
-    @Override
-    public String toString() {
-        return "Comment{" +
-                "text='" + text + '\'' +
-                '}';
     }
 }
